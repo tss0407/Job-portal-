@@ -56,8 +56,17 @@
 .search-bar,.button{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: start;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.search-bar-result{
+    display: flex;
+    flex-direction: column;
+    
+    
+    width: 80%;
+    
 }
 
 /* .both{
@@ -66,13 +75,8 @@
     align-items: start;
     justify-content: start;
 } */
-.search-bar form{
-    width: 80%;
-}
-.search-bar div{
-    width: 30%;
-    height: auto;
-}
+
+
 .search-bar button{
     padding: 0.8rem;
     font-size: 1rem;
@@ -112,7 +116,8 @@ input.Location{
 .filter{
     grid-column-start: 1;
     grid-column-end: span 2;
-    
+    display: flex;
+    flex-direction: column;
 }
 .list-group-item{
     border-color: white;
@@ -146,7 +151,7 @@ input.Location{
 .card{
     height: 100%;
     background-color: #012136;
-    border: 2px solid whitesmoke;
+    border: 1.5px solid whitesmoke;
 }
 .card-body{
     display: flex;
@@ -191,14 +196,13 @@ input.Location{
     background-color: #e9f3ff;
     cursor: pointer;
 }
-.loc_result,.salary_result,.role_result {
+.loc_result,.salary_result,.role_result,.main_loc_result {
     overflow: scroll; 
     scrollbar-width: none; 
     -ms-overflow-style: none;  
 }
-.filter{
-    position:sticky;
-}
+
+
 
 .filter-location{
     color: black;

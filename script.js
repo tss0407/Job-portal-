@@ -1,10 +1,10 @@
-const jobList=[];
+
 
 document.addEventListener('DOMContentLoaded',()=>{
     fetch('fake_job_postings.json')
     .then(response =>response.json())
     .then(data => {
-        
+        const jobList=data;
         displayJobs(data);
     })
 });
@@ -108,7 +108,9 @@ function display_loc(result){
         ul.appendChild(li); 
         li.addEventListener("click", ()=> {
             loc_inputBox.value = item;
+            localStorage.setItem("loc_value",item);
             document.querySelector(".result_ul").style.display="none";
+            ul.classList.remove("result_ul")
         });
     });
     loc_result.appendChild(ul);
@@ -143,7 +145,9 @@ function display_role(result){
         ul.appendChild(li); 
         li.addEventListener("click", ()=> {
             role_inputBox.value = item;
+            localStorage.setItem("role_value",item);
             document.querySelector(".result_ul").style.display="none";
+            ul.classList.remove("result_ul")
         });
         
     });
@@ -177,7 +181,9 @@ function display_salary(result){
         ul.appendChild(li); 
         li.addEventListener("click", ()=> {
             salary_inputBox.value = item;
+            localStorage.setItem("salary_value",item);
             document.querySelector(".result_ul").style.display="none";
+            ul.classList.remove("result_ul");
         });; 
     });
     salary_result.appendChild(ul);
@@ -192,3 +198,50 @@ function send_job(job_id){
 }
 
 ////
+
+const main_loc_result=document.querySelector(".main_loc_result");
+const main_loc_inputBox=document.querySelector(".main-filter-location");
+main_loc_inputBox.onkeyup=function(){
+    let result=[]
+    var input=main_loc_inputBox.value;
+    if(input.length){
+        result=Array.from(loc_keywords).filter((keyword)=>{
+            return keyword.toLowerCase().includes(input.toLowerCase());
+        });
+        console.log(result);
+    }
+    
+    main_display_loc(result)
+}
+function main_display_loc(result){
+    main_loc_result.innerHTML = "";
+    const ul=document.createElement("ul");
+    ul.classList.add("result_ul");
+    
+    result.forEach(item =>{
+        const li = document.createElement('li'); 
+        li.textContent = item;  
+        ul.appendChild(li); 
+        li.addEventListener("click", ()=> {
+            main_loc_inputBox.value = item;
+            localStorage.setItem("main_loc_value",item);
+            document.querySelector(".result_ul").style.display="none";
+            ul.classList.remove("result_ul")
+        });
+    });
+    main_loc_result.appendChild(ul);
+    document.querySelector(".result_ul").style.display="flex";
+    main_loc_result.style.overflow="scroll";
+    main_loc_result.style.maxHeight="100px";
+    main_loc_result.style.height="auto";
+}
+
+// const main_loc_value=item;
+// const salary_value
+// role_value
+// loc_value
+
+
+
+    
+
