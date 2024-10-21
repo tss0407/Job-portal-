@@ -29,10 +29,18 @@ function displayJobDetails(jobs){
 
     const basic_details=document.querySelector(".basic_details");
     basic_details.innerHTML=`
-        <h2>${currentjob.title}</h2>  
-        <p>${currentjob.department}</p>
-        <p>${currentjob.location}</p>
-        <p>${currentjob.salary_range}</p>
+        <div>
+            <h2>${currentjob.title}</h2>  
+            <p>${currentjob.department}</p>
+            <p>${currentjob.location}</p>
+            <p>${currentjob.salary_range}</p>
+            <div class="Apply_now">
+                    <a href="#">Apply now</a>
+            </div>
+        </div>
+        <div>
+            <img src="./logo/Entwined-M-Logo.png" alt="company-logo"/>
+        </div>
     `
     const Profile_Insights=document.querySelector(".Profile_Insights");
     Profile_Insights.innerHTML=`
@@ -69,9 +77,9 @@ function displayJobDetails(jobs){
     const Qualification=document.querySelector(".Qualification");
     Qualification.innerHTML=`
             <h2>Qualification</h2>
-            <p>Education: ${currentjob.required_education}</p>
-            <p>Experience: ${currentjob.required_experience}</p>
-            <p>Requirements: ${currentjob.requirements}</p>
+            <p><h6>Education:</h6> ${currentjob.required_education}</p>
+            <p><h6>Experience:</h6> ${currentjob.required_experience}</p>
+            <p><h6>Requirements:</h6>${currentjob.requirements}</p>
             
     `
     

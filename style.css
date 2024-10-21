@@ -1,7 +1,7 @@
 *{
     padding: 0;
     margin: 0;
-     
+   /* background-color: #012136; */
 }
 
 .navbar-brand img{
@@ -10,34 +10,88 @@
 .search h1{
     font-size: 40px;
 }
-
-.nav-bar{
-    position:fixed;
+.navbar{
+    padding: 0;
+    color: #00aeef;
+}
+.container-fluid,.collapse,.nav-item,.nav-link,.navbar-toogler-icon{
+    background-color: #00aeef
+}
+.container-fluid{
+    padding:0 5.4%;
+}
+.navbar-toogler-icon{
+    color: white;
+}
+.navbar a{
+    color: white;
+    font-weight: 500;
 }
 
+.dropdown-menu{
+    background-color:#00aeef;
+    
+}
 .search{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 100px;
+    justify-content: start;
+    align-items: start;
     padding: 100px;
+    padding-top: 200px;
+    background-color: #012136;
+    padding-bottom:50px
+    
 }
 
+
+.sub_search{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: left;
+    width: 100%;
+    /* margin-right: 5.4%; */
+}
 .search-bar,.button{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-}
-.search-bar form{
-    width: 50%;
+    justify-content: start;
 }
 
+/* .both{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+} */
+.search-bar form{
+    width: 80%;
+}
+.search-bar div{
+    width: 30%;
+    height: auto;
+}
+.search-bar button{
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
 .search-bar input{
     height: 50px;
     
 }
+.both p{
+    font-size: 20px;
+    padding:20px;
+    padding-left:0px;
+    color: orange;
+}
+.sub_search h1{
+    color: white;
+}
+
 
 input.Location{
     background: url('./svg/location-2955.svg') no-repeat left center;
@@ -50,9 +104,11 @@ input.Location{
 .jobs{
     display: grid;
     grid-template-columns: repeat(12,1fr);
-    margin: 5.9%;
-    
+    padding: 5.9%;
+    margin-top: 0;
+    background-color: #012136;
 }
+
 .filter{
     grid-column-start: 1;
     grid-column-end: span 2;
@@ -89,6 +145,8 @@ input.Location{
 }
 .card{
     height: 100%;
+    background-color: #012136;
+    border: 2px solid whitesmoke;
 }
 .card-body{
     display: flex;
@@ -96,7 +154,15 @@ input.Location{
     justify-content: space-between;
     row-gap: 15px;
 }
+.card-title{
+    color: white;
+}
+.card-text{
+    color:aqua;
+    font-weight: 500;
+}
 .result_ul{
+    
     list-style-type: none;
     padding: 10px;
     padding-top:3px;
@@ -108,17 +174,18 @@ input.Location{
     z-index: 1;
     position: relative;
     width: 100%;
-    border: 1px solid white;
+    border:none;
 }
 .card:hover{
-    background-color: whitesmoke;
+    background-color: #013631;
     cursor:default;
 }
 .result_ul li{
     width: 100%;
-    border: 1px solid whitesmoke;
+    /* border-bottom: 1px solid white; */
     padding-left: 10px;
     font-size:15px;
+    color:white;
 }
 .result ul li:hover{
     background-color: #e9f3ff;
@@ -132,4 +199,13 @@ input.Location{
 .filter{
     position:sticky;
 }
-    
+
+.filter-location{
+    color: black;
+}
+.search-box h5{
+    color: white;
+}
+.search-box{
+    position:sticky;
+}
