@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     fetch('fake_job_postings.json')
     .then(response =>response.json())
     .then(data => {
-        const jobList=data;
-        displayJobs(data,0);
+        
+        displayJobs(data);
     })
 });
 
@@ -48,7 +48,7 @@ function displayJobs(jobs){
                         <img src="./svg/suitcase-svgrepo-com.svg" alt="suitcase-svg"/>
                         <p class="card-text">${current_empl}</p>
                     </div>
-                    <a href="./jobdetails.html" class="btn btn-primary">See details</a>
+                    <a href="./jobdetails.html" onclick="send_job(${currentjob.job_id})" target="_blank" class="btn btn-primary">See details</a>
                 </div>
             </div>
         </div>
@@ -63,8 +63,8 @@ function displayJobs(jobs){
                     <div class="job-location_svg">
                         <img src="./svg/suitcase-svgrepo-com.svg" alt="suitcase-svg"/>
                         <p class="card-text">${nxt_empl}</p>
-                    </div>
-                    <a href="./jobdetails.html" class="btn btn-primary">See details</a>
+                    </div> 
+                    <a href="./jobdetails.html" onclick="send_job(${nextJob.job_id})" target="_blank" class="btn btn-primary">See details</a>
                 </div>
             </div>
         </div>`;
@@ -81,6 +81,7 @@ function displayJobs(jobs){
     };
     
 }
+
 
 const loc_result=document.querySelector(".loc_result");
 const loc_inputBox=document.querySelector(".filter-location");
@@ -100,6 +101,7 @@ function display_loc(result){
     loc_result.innerHTML = "";
     const ul=document.createElement("ul");
     ul.classList.add("result_ul");
+    
     result.forEach(item =>{
         const li = document.createElement('li'); 
         li.textContent = item;  
@@ -185,3 +187,8 @@ function display_salary(result){
     salary_result.style.height="auto";
 }
 
+function send_job(job_id){
+    localStorage.setItem("Job_ID",job_id);
+}
+
+////

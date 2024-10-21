@@ -10,8 +10,9 @@
 .search h1{
     font-size: 40px;
 }
-.navbar{
-    background-color: blueviolet;
+
+.nav-bar{
+    position:fixed;
 }
 
 .search{
