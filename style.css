@@ -109,7 +109,10 @@ input.Location{
     width: 100%;
     border: 1px solid white;
 }
-
+.card:hover{
+    background-color: whitesmoke;
+    cursor:default;
+}
 .result_ul li{
     width: 100%;
     border: 1px solid whitesmoke;
@@ -119,7 +122,6 @@ input.Location{
 .result ul li:hover{
     background-color: #e9f3ff;
     cursor: pointer;
-    
 }
 .loc_result,.salary_result,.role_result {
     overflow: scroll; 

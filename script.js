@@ -5,13 +5,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     .then(response =>response.json())
     .then(data => {
         const jobList=data;
-        displayJobs(data);
+        displayJobs(data,0);
     })
 });
-
-
-
-
 
 const loc_keywords=new Set();
 const role_keywords=new Set();
@@ -21,16 +17,17 @@ function displayJobs(jobs){
     const card=document.querySelector(".display_jobs");
     console.log(card)
     card.innerHTML=""
-    jobs.forEach((job,index) => {
+    for(let i=0;i<jobs.length;i=i+2) {
         const cardBody=document.createElement('div');
         cardBody.classList.add("row");
         cardBody.classList.add("row-cols-1");
         cardBody.classList.add("row-cols-md-2");
         cardBody.classList.add("g-4");
         cardBody.classList.add("super_card");
-        const nextJob=jobs[index+1];
+        const currentjob=jobs[i];
+        const nextJob=jobs[i+1];
         
-        var current_empl=job.employment_type;
+        var current_empl=currentjob.employment_type;
         var nxt_empl=nextJob.employment_type;
         if(current_empl == ""){
             current_empl="NA";
@@ -42,16 +39,16 @@ function displayJobs(jobs){
         <div class="col-sm-6 mb-3 mb-sm-0">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">${job.title}</h3>
+                    <h3 class="card-title">${currentjob.title}</h3>
                     <div class="job-location_svg">
                         <img  src="./svg/location-2955.svg" alt="location-svg">
-                        <p class="card-text">${job.location}</p>
+                        <p class="card-text">${currentjob.location}</p>
                     </div>
                     <div class="job-location_svg">
                         <img src="./svg/suitcase-svgrepo-com.svg" alt="suitcase-svg"/>
                         <p class="card-text">${current_empl}</p>
                     </div>
-                    <a href="#" class="btn btn-primary">See details</a>
+                    <a href="./jobdetails.html" class="btn btn-primary">See details</a>
                 </div>
             </div>
         </div>
@@ -67,23 +64,21 @@ function displayJobs(jobs){
                         <img src="./svg/suitcase-svgrepo-com.svg" alt="suitcase-svg"/>
                         <p class="card-text">${nxt_empl}</p>
                     </div>
-                    
-                    
-                    <a href="#" class="btn btn-primary">See details</a>
+                    <a href="./jobdetails.html" class="btn btn-primary">See details</a>
                 </div>
             </div>
         </div>`;
 
-        loc_keywords.add(job.location);
+        loc_keywords.add(currentjob.location);
         loc_keywords.add(nextJob.location);
-        role_keywords.add(job.title);
+        role_keywords.add(currentjob.title);
         role_keywords.add(nextJob.title);
-        salary_keywords.add(job.salary_range);
+        salary_keywords.add(currentjob.salary_range);
         salary_keywords.add(nextJob.salary_range);
         
-        index++;
+        
         card.appendChild(cardBody);
-    });
+    };
     
 }
 
@@ -103,20 +98,22 @@ loc_inputBox.onkeyup=function(){
 }
 function display_loc(result){
     loc_result.innerHTML = "";
-    
     const ul=document.createElement("ul");
     ul.classList.add("result_ul");
     result.forEach(item =>{
         const li = document.createElement('li'); 
-        li.textContent = item;                   
+        li.textContent = item;  
         ul.appendChild(li); 
+        li.addEventListener("click", ()=> {
+            loc_inputBox.value = item;
+            document.querySelector(".result_ul").style.display="none";
+        });
     });
     loc_result.appendChild(ul);
     document.querySelector(".result_ul").style.display="flex";
     loc_result.style.overflow="scroll";
     loc_result.style.maxHeight="100px";
     loc_result.style.height="auto";
- 
 }
 
 
@@ -136,23 +133,25 @@ role_inputBox.onkeyup=function(){
 }
 function display_role(result){
     role_result.innerHTML = "";
-    
     const ul=document.createElement("ul");
     ul.classList.add("result_ul");
     result.forEach(item =>{
         const li = document.createElement('li'); 
-        li.textContent = item;                   
+        li.textContent = item; 
         ul.appendChild(li); 
+        li.addEventListener("click", ()=> {
+            role_inputBox.value = item;
+            document.querySelector(".result_ul").style.display="none";
+        });
+        
     });
     role_result.appendChild(ul);
     document.querySelector(".result_ul").style.display="flex";
     role_result.style.overflow="scroll";
     role_result.style.maxHeight="100px";
     role_result.style.height="auto";
- 
-    
 }
-role_result.classList.add("result_ul");
+
 const salary_result=document.querySelector(".salary_result");
 const salary_inputBox=document.querySelector(".filter-salary");
 salary_inputBox.onkeyup=function(){
@@ -167,21 +166,22 @@ salary_inputBox.onkeyup=function(){
     display_salary(result)
 }
 function display_salary(result){
-    
     salary_result.innerHTML = "";
-    
     const ul=document.createElement("ul");
     ul.classList.add("result_ul");
     result.forEach(item =>{
         const li = document.createElement('li'); 
-        li.textContent = item;                   
+        li.textContent = item;       
         ul.appendChild(li); 
+        li.addEventListener("click", ()=> {
+            salary_inputBox.value = item;
+            document.querySelector(".result_ul").style.display="none";
+        });; 
     });
     salary_result.appendChild(ul);
     document.querySelector(".result_ul").style.display="flex";
     salary_result.style.overflow="scroll";
     salary_result.style.maxHeight="100px";
     salary_result.style.height="auto";
- 
-    
 }
+
