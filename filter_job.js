@@ -17,7 +17,7 @@ function displayJobs(jobs){
     console.log(card);
     // card.innerHTML="";
     for(let i=0;i<jobs.length;i=i+1) {
-        if((jobs[i].salary_range==salary_value && jobs[i].title==role_value && jobs[i].location==loc_value) || (jobs[i].title==main_role_value)){
+        if(jobs[i].salary_range==salary_value || jobs[i].title==role_value || jobs[i].location==loc_value || (jobs[i].title==main_role_value)){
             const currentjob=jobs[i];
             const cardBody=document.createElement('div');
             cardBody.classList.add("card");
