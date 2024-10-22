@@ -30,3 +30,8 @@
 .intro_img{
     background-color: #00aeef;
 }
+@media (max-width:768px){
+    .display_filterjobs{
+        gird-column-start:1;
+    }
+}
