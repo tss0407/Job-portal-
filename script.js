@@ -108,6 +108,7 @@ function display_loc(result){
         ul.appendChild(li); 
         li.addEventListener("click", ()=> {
             loc_inputBox.value = item;
+            
             localStorage.setItem("loc_value",item);
             document.querySelector(".result_ul").style.display="none";
             ul.classList.remove("result_ul")
@@ -145,9 +146,10 @@ function display_role(result){
         ul.appendChild(li); 
         li.addEventListener("click", ()=> {
             role_inputBox.value = item;
+            
             localStorage.setItem("role_value",item);
             document.querySelector(".result_ul").style.display="none";
-            ul.classList.remove("result_ul")
+            ul.classList.remove("result_ul");
         });
         
     });
@@ -181,6 +183,7 @@ function display_salary(result){
         ul.appendChild(li); 
         li.addEventListener("click", ()=> {
             salary_inputBox.value = item;
+            
             localStorage.setItem("salary_value",item);
             document.querySelector(".result_ul").style.display="none";
             ul.classList.remove("result_ul");
@@ -199,13 +202,13 @@ function send_job(job_id){
 
 ////
 
-const main_loc_result=document.querySelector(".main_loc_result");
-const main_loc_inputBox=document.querySelector(".main-filter-location");
-main_loc_inputBox.onkeyup=function(){
+const main_role_result=document.querySelector(".main_role_result");
+const main_role_inputBox=document.querySelector(".main-filter-role");
+main_role_inputBox.onkeyup=function(){
     let result=[]
-    var input=main_loc_inputBox.value;
+    var input=main_role_inputBox.value;
     if(input.length){
-        result=Array.from(loc_keywords).filter((keyword)=>{
+        result=Array.from(role_keywords).filter((keyword)=>{
             return keyword.toLowerCase().includes(input.toLowerCase());
         });
         console.log(result);
@@ -214,7 +217,7 @@ main_loc_inputBox.onkeyup=function(){
     main_display_loc(result)
 }
 function main_display_loc(result){
-    main_loc_result.innerHTML = "";
+    main_role_result.innerHTML = "";
     const ul=document.createElement("ul");
     ul.classList.add("result_ul");
     
@@ -223,17 +226,17 @@ function main_display_loc(result){
         li.textContent = item;  
         ul.appendChild(li); 
         li.addEventListener("click", ()=> {
-            main_loc_inputBox.value = item;
-            localStorage.setItem("main_loc_value",item);
+            main_role_inputBox.value = item;
+            localStorage.setItem("main_role_value",item);          
             document.querySelector(".result_ul").style.display="none";
             ul.classList.remove("result_ul")
         });
     });
-    main_loc_result.appendChild(ul);
+    main_role_result.appendChild(ul);
     document.querySelector(".result_ul").style.display="flex";
-    main_loc_result.style.overflow="scroll";
-    main_loc_result.style.maxHeight="100px";
-    main_loc_result.style.height="auto";
+    main_role_result.style.overflow="scroll";
+    main_role_result.style.maxHeight="100px";
+    main_role_result.style.height="auto";
 }
 
 // const main_loc_value=item;

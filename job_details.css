@@ -12,9 +12,7 @@
 
 }
 
-.sub_job_details h1{
 
-}
 .basic_details,.Profile_Insights,.loc_description,.Job-description,.Qualification,.Benefits,.sub_job_details h1{
     display: flex;
     flex-direction: column;
@@ -102,4 +100,17 @@ h5{
 }   
 p{
     text-align: justify;
+}
+
+@media (max-width:768px){
+    .job_details{
+        display: grid;
+        grid-template-columns: repeat(5,1fr);
+    }
+    .sub_job_details{
+        grid-column-start: 1;
+    }
+    .basic_details img{
+        height: 100px;
+    }
 }
