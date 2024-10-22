@@ -1,9 +1,12 @@
 JOB-PORTAL website <br>
 
 JOB-GURU<br>
+Link of the website<br>
+https://jade-ganache-7f590f.netlify.app/<br>
 
 video link of the website<br>
 https://drive.google.com/file/d/1n3Jr-FXNiUymzm7gv8Ry4dXoEfXSnEGD/view?usp=sharing<br>
+
 
 Tech Stack Used<br>
 
