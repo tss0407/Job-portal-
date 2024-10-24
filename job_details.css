@@ -102,6 +102,10 @@ p{
     text-align: justify;
 }
 
+.Qualification p{
+    text-align: justify;
+}
+
 @media (max-width:768px){
     .job_details{
         display: grid;
